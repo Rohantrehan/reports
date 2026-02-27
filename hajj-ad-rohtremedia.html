@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Bindas — Hajj Ad Production Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --red: #E8161B;
+  --red2: #C01015;
+  --black: #111111;
+  --black2: #1a1a1a;
+  --black3: #222222;
+  --white: #ffffff;
+  --offwhite: #f5f5f5;
+  --grey: #888888;
+  --lightgrey: #dddddd;
+  --border: rgba(255,255,255,0.08);
+  --green: #27AE60;
+  --gold: #E8A716;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+.nav {
+  background: var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+.nav-logo span { color: var(--red); }
+
+.nav-right { display: flex; align-items: center; gap: 16px; }
+
+.nav-tag {
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 2px;
+}
+
+/* ─── TABS ─── */
+.tabs {
+  display: flex;
+  background: var(--black2);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  overflow-x: auto;
+  position: sticky;
+  top: 57px;
+  z-index: 90;
+}
+
+.tab {
+  padding: 16px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  color: var(--grey);
+  transition: all 0.2s;
+  user-select: none;
+}
+.tab.active { color: var(--white); border-bottom-color: var(--red); }
+.tab:hover:not(.active) { color: var(--white); }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--black);
+  padding: 100px 60px 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid var(--red);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--red);
+}
+
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+
+.hero-kicker {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-kicker::before {
+  content: '';
+  display: block;
+  width: 30px; height: 2px;
+  background: var(--red);
+}
+
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 9vw, 90px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.hero h1 .red { color: var(--red); }
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--grey);
+  font-weight: 400;
+  margin-bottom: 60px;
+  max-width: 500px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+}
+
+.hero-stat {
+  background: var(--black2);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: background 0.2s;
+}
+.hero-stat:hover { background: var(--black3); }
+
+.hero-stat .num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--white);
+}
+.hero-stat .num.red { color: var(--red); }
+.hero-stat .label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.hero-stat .sublabel { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ─── PANELS ─── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ─── SECTION ─── */
+.section {
+  padding: 80px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-kicker {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-kicker::before {
+  content: '';
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--red);
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.section-title .red { color: var(--red); }
+
+.section-body {
+  font-size: 15px;
+  color: var(--grey);
+  max-width: 620px;
+  line-height: 1.8;
+  margin-bottom: 50px;
+}
+
+/* ─── DIVIDERS ─── */
+.red-divider { height: 3px; background: var(--red); }
+.thin-divider { height: 1px; background: rgba(255,255,255,0.07); }
+
+/* ─── STORYBOARD SCENES ─── */
+.storyboard { display: flex; flex-direction: column; gap: 2px; }
+
+.scene {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  background: rgba(255,255,255,0.05);
+  gap: 1px;
+  transition: background 0.15s;
+}
+.scene:hover { background: rgba(255,255,255,0.07); }
+
+.scene-left {
+  background: var(--black2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  text-align: center;
+  border-top: 3px solid var(--red);
+  gap: 6px;
+}
+
+.scene-left .scene-num {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.scene-left .scene-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
+}
+
+.scene-left .scene-dur {
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+}
+
+.scene-left .scene-icon { font-size: 22px; margin-top: 4px; }
+
+.scene-right {
+  background: var(--black2);
+  padding: 28px 32px;
+}
+
+.mood-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border: 1px solid;
+  margin-bottom: 12px;
+}
+.mood-reflective { color: #E8A716; border-color: #E8A716; background: rgba(232,167,22,0.08); }
+.mood-sad { color: #888; border-color: #555; background: rgba(255,255,255,0.04); }
+.mood-emotional { color: var(--red); border-color: var(--red); background: rgba(232,22,27,0.08); }
+.mood-hopeful { color: var(--green); border-color: var(--green); background: rgba(39,174,96,0.08); }
+.mood-warm { color: #E8A716; border-color: #E8A716; background: rgba(232,167,22,0.08); }
+.mood-action { color: var(--white); border-color: var(--red); background: var(--red); }
+
+.scene-right h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.scene-right .visual-note {
+  font-size: 13px;
+  color: var(--grey);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.vo-box {
+  background: var(--black);
+  border-left: 4px solid var(--red);
+  padding: 14px 18px;
+}
+
+.vo-box .vo-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.vo-box .vo-text {
+  font-size: 15px;
+  color: var(--white);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ─── CALLOUT ─── */
+.callout-block {
+  background: var(--red);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+.callout-block .icon { font-size: 28px; flex-shrink: 0; }
+.callout-block p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.5;
+}
+.callout-block p span { font-weight: 400; opacity: 0.85; }
+
+/* ─── CONCEPT 2 ─── */
+.c2-hook {
+  background: var(--black2);
+  border-top: 3px solid var(--red);
+  padding: 48px;
+  margin-bottom: 2px;
+}
+
+.c2-hook .big {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 900;
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.c2-hook .big .red { color: var(--red); }
+
+.c2-hook p { font-size: 16px; color: var(--grey); }
+
+.bullets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  margin: 2px 0;
+}
+
+.bullet-cell {
+  background: var(--black2);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 3px solid transparent;
+  transition: border-top-color 0.2s, background 0.2s;
+}
+.bullet-cell:hover { background: var(--black3); border-top-color: var(--red); }
+
+.bullet-cell .check {
+  width: 36px; height: 36px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bullet-cell h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.bullet-cell p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+/* ─── VO SCRIPT ─── */
+.script-wrap { max-width: 760px; }
+
+.script-block {
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.script-block:last-child { border-bottom: none; }
+
+.script-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+
+.script-direction {
+  font-size: 12px;
+  color: var(--grey);
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.script-vo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.pause-tag {
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 2px 8px;
+  margin: 0 6px;
+  vertical-align: middle;
+  font-style: normal;
+}
+
+/* ─── SHOT LIST ─── */
+.shot-list { border-top: 1px solid rgba(255,255,255,0.07); }
+
+.shot {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  align-items: start;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s;
+}
+.shot:hover { background: rgba(255,255,255,0.02); }
+
+.shot-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+}
+
+.shot-detail h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.shot-detail p { font-size: 13px; color: var(--grey); line-height: 1.7; }
+
+.shot-tag {
+  background: var(--black2);
+  padding: 6px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--grey);
+  text-align: center;
+  align-self: start;
+  margin-top: 4px;
+}
+
+/* ─── STRATEGY ─── */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 40px;
+}
+
+.strategy-cell {
+  background: var(--black2);
+  padding: 36px;
+  border-top: 3px solid transparent;
+  transition: border-top-color 0.2s, background 0.2s;
+}
+.strategy-cell:hover { background: var(--black3); border-top-color: var(--red); }
+.strategy-cell.accent { border-top-color: var(--red); }
+
+.strategy-cell .badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: var(--red);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.strategy-cell .badge.green { background: var(--green); }
+.strategy-cell .badge.gold { background: var(--gold); color: var(--black); }
+
+.strategy-cell h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.strategy-cell p { font-size: 13px; color: var(--grey); line-height: 1.8; }
+
+.strategy-cell ul { list-style: none; margin-top: 16px; }
+.strategy-cell li {
+  font-size: 13px;
+  color: var(--grey);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 10px;
+  line-height: 1.5;
+}
+.strategy-cell li::before { content: '→'; color: var(--red); flex-shrink: 0; }
+
+.urgency-bar {
+  background: var(--red);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 24px;
+}
+.urgency-bar .icon { font-size: 24px; flex-shrink: 0; }
+.urgency-bar .text { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: white; line-height: 1.5; }
+.urgency-bar .sub { font-family: 'Open Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 400; margin-top: 4px; }
+
+/* ─── CLOSING ─── */
+.closing {
+  background: var(--black);
+  padding: 120px 60px;
+  text-align: center;
+  border-top: 3px solid var(--red);
+  position: relative;
+  overflow: hidden;
+}
+.closing::before {
+  content: 'HAJJ';
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 300px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  letter-spacing: -5px;
+  pointer-events: none;
+}
+.closing .inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+.closing .big-line {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.closing .big-line .red { color: var(--red); }
+
+.closing p { font-size: 15px; color: var(--grey); line-height: 1.8; margin-bottom: 60px; }
+
+.closing-meta {
+  display: flex;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  flex-wrap: wrap;
+}
+.closing-meta-item {
+  padding: 24px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.closing-meta-item:last-child { border-right: none; }
+.closing-meta-item .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 600; }
+.closing-meta-item .val { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.65); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+footer .logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 18px; letter-spacing: 1px; color: var(--white); }
+footer .logo span { color: var(--red); }
+footer p { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; }
+footer .tagline { font-size: 10px; color: var(--red); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav, footer { padding: 14px 20px; }
+  .hero { padding: 48px 20px 40px; }
+  .section { padding: 48px 20px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .bullets-grid { grid-template-columns: 1fr; }
+  .strategy-grid { grid-template-columns: 1fr; }
+  .scene { grid-template-columns: 80px 1fr; }
+  .shot { grid-template-columns: 50px 1fr; }
+  .shot-tag { display: none; }
+  .closing { padding: 60px 20px; }
+  .closing-meta { flex-direction: column; }
+  .closing-meta-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .c2-hook { padding: 28px 24px; }
+  .tabs { top: 50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">FLIGHT<span>BINDAS</span></div>
+  <div class="nav-right">
+    <div class="nav-tag">Hajj Ad Brief · 2025</div>
+  </div>
+</nav>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('concept1', this)">Concept 1 — Emotional</div>
+  <div class="tab" onclick="switchTab('concept2', this)">Concept 2 — Direct</div>
+  <div class="tab" onclick="switchTab('vo', this)">VO Script</div>
+  <div class="tab" onclick="switchTab('shots', this)">Shot List</div>
+  <div class="tab" onclick="switchTab('strategy', this)">Strategy</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CONCEPT 1
+══════════════════════════════════════════ -->
+<div class="panel active" id="concept1">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Video Ad · 40 Seconds · 9:16 Vertical · Meta</div>
+      <h1>SAPNA KAB<br>PURA <span class="red">KAROGE?</span></h1>
+      <p class="hero-sub">Emotional family story. Slow build. High trust. Peak conversion for warm audiences.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">40<span style="font-size:20px">sec</span></div>
+          <div class="label">Target Duration</div>
+          <div class="sublabel">Tight. No wasted frames.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num red">5</div>
+          <div class="label">Scenes</div>
+          <div class="sublabel">Each with a single job to do</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">9:16</div>
+          <div class="label">Format</div>
+          <div class="sublabel">Reels, Stories, Feed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num red">1</div>
+          <div class="label">CTA</div>
+          <div class="sublabel">Send Message only</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="red-divider"></div>
+
+  <section class="section reveal">
+    <div class="section-kicker">Scene-by-Scene Breakdown</div>
+    <h2 class="section-title">THE <span class="red">STORYBOARD</span></h2>
+    <p class="section-body">Every scene has one job. Don't overload it. The emotion compounds across scenes — respect the build.</p>
+
+    <div class="storyboard">
+
+      <div class="scene reveal">
+        <div class="scene-left">
+          <div class="scene-num">Scene</div>
+          <div class="scene-time">01</div>
+          <div class="scene-dur">0–5 sec</div>
+          <div class="scene-icon">👴</div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-reflective">Reflective · Quiet</span>
+          <h3>The Waiting Father</h3>
+          <div class="visual-note">Elderly father sitting alone in soft light. He's watching a Kaaba video on his phone. Face still — not acting, just being. Nasheed fades in gently. Hold the silence.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover</span>
+            <span class="vo-text">"हर साल सोचते हैं… इस बार शायद हज पर जाएंगे…"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene reveal">
+        <div class="scene-left">
+          <div class="scene-num">Scene</div>
+          <div class="scene-time">02</div>
+          <div class="scene-dur">5–10 sec</div>
+          <div class="scene-icon">📋</div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-sad">Tension · Real Life</span>
+          <h3>The Obstacles</h3>
+          <div class="visual-note">Family around a table — budget papers, phone calculator. In the background, mother quietly folds her prayer mat. Nobody notices her. The contrast tells the whole story.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover</span>
+            <span class="vo-text">"लेकिन कभी budget… कभी planning… कभी सही guidance नहीं मिलती…"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene reveal">
+        <div class="scene-left">
+          <div class="scene-left" style="border-top-color:var(--red); background:rgba(232,22,27,0.06);">
+            <div class="scene-num">Scene</div>
+            <div class="scene-time" style="font-size:28px;">03</div>
+            <div class="scene-dur">10–18 sec</div>
+            <div class="scene-icon">🕋</div>
+          </div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-emotional">Peak Emotion · Spiritual</span>
+          <h3>The Dream, Deferred</h3>
+          <div class="visual-note">Slow-motion Kaaba footage. People in ihram raising hands in dua. Tears on faces. This is the emotional peak — hold it longer than feels comfortable. Let it breathe.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover · Slow, deliberate</span>
+            <span class="vo-text">"ज़िंदगी का सबसे बड़ा सफर…<br><br>…टलता ही रहता है।"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene reveal">
+        <div class="scene-left">
+          <div class="scene-num">Scene</div>
+          <div class="scene-time">04</div>
+          <div class="scene-dur">18–28 sec</div>
+          <div class="scene-icon">💡</div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-hopeful">Hope · Solution</span>
+          <h3>The Turn</h3>
+          <div class="visual-note">Tone shifts completely. Big clean text on dark screen: "अब इंतज़ार क्यों?" — cut to travel expert talking warmly with an elderly couple. Confident. Professional. Trustworthy.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover</span>
+            <span class="vo-text">"Flight Bindas आपके लिए लेकर आया है पूरी Hajj planning — guidance से लेकर stay तक… सब कुछ भरोसे के साथ।"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene reveal">
+        <div class="scene-left">
+          <div class="scene-num">Scene</div>
+          <div class="scene-time">05</div>
+          <div class="scene-dur">28–35 sec</div>
+          <div class="scene-icon">👨‍👩‍👧</div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-warm">Trust · Authority</span>
+          <h3>Social Proof</h3>
+          <div class="visual-note">Smiling group of pilgrims. Expert helping elderly couple with luggage. Warm golden light. Real-looking, not stock-photo-perfect. Humanity over polish.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover</span>
+            <span class="vo-text">"हमारी experienced team ने सैकड़ों परिवारों को safely Hajj पर भेजा है।"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene reveal">
+        <div class="scene-left" style="border-top-color: var(--green);">
+          <div class="scene-num">CTA</div>
+          <div class="scene-time" style="color:var(--green); font-size:20px;">CLOSE</div>
+          <div class="scene-dur">35–40 sec</div>
+          <div class="scene-icon">📲</div>
+        </div>
+        <div class="scene-right">
+          <span class="mood-badge mood-action">Call to Action</span>
+          <h3>The Ask</h3>
+          <div class="visual-note">Screen text: "अपना Hajj सफर शुरू करें आज ही." — Logo. Animated "Send Message" button with pulse glow. One line urgency at bottom. Clean, no clutter.</div>
+          <div class="vo-box">
+            <span class="vo-label">Voiceover</span>
+            <span class="vo-text">"नीचे क्लिक करें और अपनी planning शुरू करें।"</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout-block reveal">
+      <div class="icon">💡</div>
+      <p>This ad doesn't sell a package. <span>It sells permission to finally stop waiting. Every scene removes one layer of guilt about the delay — until the only move left is to click.</span></p>
+    </div>
+
+  </section>
+
+  <div class="red-divider"></div>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <div class="inner">
+      <div class="big-line">EMOTIONAL.<br><span class="red">DELIBERATE.</span><br>HIGH TRUST.</div>
+      <p>Best for warm audiences — people who've already seen travel content, engaged with Islamic lifestyle pages, or are in the 35–65 age group actively thinking about Hajj. Let the algorithm learn from this one first.</p>
+      <div class="closing-meta">
+        <div class="closing-meta-item">
+          <span class="lbl">Format</span>
+          <span class="val">9:16 Vertical</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Duration</span>
+          <span class="val">35–40 seconds</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Objective</span>
+          <span class="val">Messages / Lead Gen</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Audience</span>
+          <span class="val">Warm / Retarget</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CONCEPT 2
+══════════════════════════════════════════ -->
+<div class="panel" id="concept2">
+
+  <section class="section">
+    <div class="section-kicker">Concept 02 — Direct Authority</div>
+    <h2 class="section-title">STOP THE <span class="red">SCROLL.</span><br>GET THE CLICK.</h2>
+    <p class="section-body">Faster. Bolder. No emotional build-up. Made for cold traffic who don't know Flight Bindas yet. First 3 seconds do all the work.</p>
+
+    <div class="c2-hook reveal">
+      <div class="big">अब Hajj<br>टालना <span class="red">बंद</span><br>कीजिए।</div>
+      <p>Opening 3 seconds. Full screen. Big Hindi text. No music yet — just the words hitting.</p>
+    </div>
+
+    <div class="bullets-grid reveal">
+      <div class="bullet-cell">
+        <div class="check">✓</div>
+        <h4>Complete Guidance</h4>
+        <p>From documentation to departure — every step covered. Nothing left to figure out alone.</p>
+      </div>
+      <div class="bullet-cell">
+        <div class="check">✓</div>
+        <h4>Trusted Arrangements</h4>
+        <p>Hundreds of families sent safely. Track record you can verify, not just claim.</p>
+      </div>
+      <div class="bullet-cell">
+        <div class="check">✓</div>
+        <h4>Transparent Packages</h4>
+        <p>No hidden costs. Price shown upfront. You know exactly what you're committing to.</p>
+      </div>
+    </div>
+
+    <div class="vo-box reveal" style="margin-top: 2px; padding: 24px 28px;">
+      <span class="vo-label">Opening Voiceover</span>
+      <span class="vo-text" style="font-size:18px;">"आपका सपना अभी भी इंतज़ार कर रहा है।<br>Flight Bindas के साथ Hajj planning हुई आसान।"</span>
+    </div>
+
+    <div class="vo-box reveal" style="margin-top: 2px; padding: 24px 28px; border-left-color: var(--green);">
+      <span class="vo-label" style="color:var(--green);">Final CTA</span>
+      <span class="vo-text" style="font-size:18px;">"Message करें और अपनी seat secure करें।"</span>
+    </div>
+
+    <div class="urgency-bar reveal">
+      <div class="icon">⏳</div>
+      <div>
+        <div class="text">"Hajj slots limited होते हैं। Planning अभी शुरू करें।"</div>
+        <div class="sub">End card — both concepts. Real urgency, not manufactured. Works because it's actually true.</div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     VO SCRIPT
+══════════════════════════════════════════ -->
+<div class="panel" id="vo">
+  <section class="section">
+    <div class="section-kicker">Recording Ready</div>
+    <h2 class="section-title">FULL <span class="red">VOICEOVER</span><br>SCRIPT</h2>
+    <p class="section-body">Hand this directly to your VO artist. Every pause is marked. Every tone note is written. No guessing on set.</p>
+
+    <div class="script-wrap">
+      <div class="script-block reveal">
+        <div class="script-time">0:00 – 0:05 · Scene 1 · The Waiting Father</div>
+        <div class="script-direction">Slow. Wistful. Half-whisper almost. Like someone remembering a dream. Zero urgency at this point.</div>
+        <div class="script-vo">"हर साल सोचते हैं… <span class="pause-tag">pause 1.5 sec</span> इस बार शायद… हज पर जाएंगे…"</div>
+      </div>
+
+      <div class="script-block reveal">
+        <div class="script-time">0:05 – 0:10 · Scene 2 · The Obstacles</div>
+        <div class="script-direction">Gentle. Understanding. You are not blaming — you are empathising. Each "kabhee" carries a sigh.</div>
+        <div class="script-vo">"लेकिन कभी budget… <span class="pause-tag">pause</span> कभी planning… <span class="pause-tag">pause</span> कभी सही guidance नहीं मिलती…"</div>
+      </div>
+
+      <div class="script-block reveal">
+        <div class="script-time">0:10 – 0:18 · Scene 3 · The Emotional Peak</div>
+        <div class="script-direction">Slow. Heavy. Let silence exist between these two lines. 3 full seconds of silence between them. Don't rush this.</div>
+        <div class="script-vo">"ज़िंदगी का सबसे बड़ा सफर…"<br><br><span style="color:var(--grey); font-size:14px; font-family:'Open Sans'">[3 seconds silence — let visuals breathe]</span><br><br>"…टलता ही रहता है।"</div>
+      </div>
+
+      <div class="script-block reveal">
+        <div class="script-time">0:18 – 0:28 · Scene 4 · The Solution</div>
+        <div class="script-direction">Complete tone shift. Lift the energy. Warm confidence. Like a trusted friend who actually has the answer.</div>
+        <div class="script-vo">"Flight Bindas आपके लिए लेकर आया है — पूरी Hajj planning। Guidance से लेकर stay तक… <span class="pause-tag">brief pause</span> सब कुछ भरोसे के साथ।"</div>
+      </div>
+
+      <div class="script-block reveal">
+        <div class="script-time">0:28 – 0:35 · Scene 5 · Social Proof</div>
+        <div class="script-direction">Assured. Proud but humble. The kind of voice that's earned authority, not claiming it.</div>
+        <div class="script-vo">"हमारी experienced team ने सैकड़ों परिवारों को safely Hajj पर भेजा है।"</div>
+      </div>
+
+      <div class="script-block reveal">
+        <div class="script-time">0:35 – 0:40 · Final CTA</div>
+        <div class="script-direction">Clear. Calm. Unhurried. The call to action lands hardest when you don't rush it.</div>
+        <div class="script-vo">"नीचे क्लिक करें — <span class="pause-tag">pause</span> और अपनी planning शुरू करें।"</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SHOT LIST
+══════════════════════════════════════════ -->
+<div class="panel" id="shots">
+  <section class="section">
+    <div class="section-kicker">Low-Budget Shoot</div>
+    <h2 class="section-title">SHOT-BY-SHOT<br><span class="red">PRODUCTION LIST</span></h2>
+    <p class="section-body">You don't need a big crew. You need the right 7 shots. Natural light beats studio light here — warmth is the whole aesthetic.</p>
+
+    <div class="shot-list">
+
+      <div class="shot reveal">
+        <div class="shot-num">S1</div>
+        <div class="shot-detail">
+          <h4>Elderly Man — Phone Screen Glow</h4>
+          <p>Medium close-up on face. Warm side light from a lamp or window only — no studio lights. Phone held below frame showing Kaaba footage. Actor should NOT perform emotion. Stillness is everything. Let the viewer project onto the face.</p>
+        </div>
+        <div class="shot-tag">Close-Up<br>Natural Light</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S2</div>
+        <div class="shot-detail">
+          <h4>Prayer Mat Fold — Background Story</h4>
+          <p>Family discussion in sharp foreground (papers, phone calculator). Mother in soft bokeh background folding her prayer mat. This contrast is the storytelling — don't explain it, just shoot it. Shallow depth of field required.</p>
+        </div>
+        <div class="shot-tag">Two-Plane<br>Shallow DoF</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S3</div>
+        <div class="shot-detail">
+          <h4>Kaaba Footage — Licensed Stock Only</h4>
+          <p>Use licensed stock (Pexels, Shutterstock, Getty). Slow motion tawaf crowd or hands raised in dua. Golden hora light preferred. Do NOT use unlicensed broadcast footage — this will get your ad rejected.</p>
+        </div>
+        <div class="shot-tag">Stock<br>Slow Motion</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S4</div>
+        <div class="shot-detail">
+          <h4>Text Card — "अब इंतज़ार क्यों?"</h4>
+          <p>Deep black or dark green background. Large Devanagari type in white or gold. Animate in with a simple fade or gentle upward slide. No complex motion graphics — the simplicity is the power. Add brand logo at bottom.</p>
+        </div>
+        <div class="shot-tag">Motion<br>Graphics</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S5</div>
+        <div class="shot-detail">
+          <h4>Travel Expert + Elderly Couple</h4>
+          <p>Expert handing documents or helping with bags. Both parties smiling. Natural outdoor light or airport-feeling interior. Expert should wear Flight Bindas branding visibly. Warmth over perfection — a little imperfect is more trustworthy.</p>
+        </div>
+        <div class="shot-tag">Medium<br>Warm Color</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S6</div>
+        <div class="shot-detail">
+          <h4>CTA End Card</h4>
+          <p>Logo top-center. Headline text large. Animated "Send Message" button with subtle WhatsApp-green pulse glow. Urgency line below in smaller text. Hajj slot urgency line. 5 seconds minimum on this card — don't rush the click.</p>
+        </div>
+        <div class="shot-tag">Motion<br>Graphics · 5sec</div>
+      </div>
+
+      <div class="shot reveal">
+        <div class="shot-num">S7</div>
+        <div class="shot-detail">
+          <h4>Pilgrims Group Shot [Optional]</h4>
+          <p>4–6 pilgrims in ihram, smiling or walking together toward camera. Wide shot. If budget doesn't allow original footage, licensed stock works fine here. Warmth and authenticity over production value. This shot adds social proof visually.</p>
+        </div>
+        <div class="shot-tag">Wide<br>Optional</div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     STRATEGY
+══════════════════════════════════════════ -->
+<div class="panel" id="strategy">
+  <section class="section">
+    <div class="section-kicker">Meta Campaign</div>
+    <h2 class="section-title">TEST BOTH.<br><span class="red">LET DATA DECIDE.</span></h2>
+    <p class="section-body">Run both creatives from day one. Same budget split 50/50. Meta's algorithm will tell you within 7 days which audience responds to which message. Then scale the winner.</p>
+
+    <div class="strategy-grid reveal">
+      <div class="strategy-cell accent">
+        <span class="badge">Creative A</span>
+        <h3>Emotional Family Story</h3>
+        <p>Best for warm audiences — retargeting, lookalikes, people who've engaged with travel or Islamic content. Converts slower but with higher intent.</p>
+        <ul>
+          <li>Longer view time, higher quality leads</li>
+          <li>Better for 35–65 age group</li>
+          <li>Lower volume, higher intent</li>
+          <li>Optimise for "Message" objective</li>
+          <li>Works best on Feed placements</li>
+        </ul>
+      </div>
+
+      <div class="strategy-cell">
+        <span class="badge">Creative B</span>
+        <h3>Direct Authority Version</h3>
+        <p>Made for cold traffic. Interrupts the scroll in 3 seconds and gets to the point. Higher CTR, faster learning phase.</p>
+        <ul>
+          <li>Higher CTR on cold audiences</li>
+          <li>Lower CPM, faster data collection</li>
+          <li>Better for Reels and Stories</li>
+          <li>Good for awareness objective first</li>
+          <li>Scale fast once it proves itself</li>
+        </ul>
+      </div>
+
+      <div class="strategy-cell">
+        <span class="badge gold">Targeting</span>
+        <h3>Who to Find</h3>
+        <p>Layer multiple signals to reach people who are actually planning Hajj — not just interested in travel generally.</p>
+        <ul>
+          <li>Age 35–65, Muslim household signals</li>
+          <li>Interest: Hajj, Umrah, Islamic travel, pilgrimage</li>
+          <li>Behaviour: Frequent international travellers</li>
+          <li>Lookalike: Built from WhatsApp enquiries</li>
+          <li>Retarget: Website visitors 30-day window</li>
+        </ul>
+      </div>
+
+      <div class="strategy-cell">
+        <span class="badge green">Funnel</span>
+        <h3>After They Click</h3>
+        <p>The ad is only the door. What happens in the first 5 minutes after click determines if you get the sale.</p>
+        <ul>
+          <li>Ad → WhatsApp click-to-chat direct</li>
+          <li>Chatbot: "Assalamu Alaikum 🤲" opener</li>
+          <li>Qualify: Family size, budget, which year?</li>
+          <li>Hot leads → human handoff within 1 hour</li>
+          <li>Follow-up: 3-message sequence in 48 hrs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="urgency-bar reveal">
+      <div class="icon">📌</div>
+      <div>
+        <div class="text">End card line for BOTH creatives — don't skip this.</div>
+        <div class="sub">"Hajj slots limited होते हैं। Planning अभी शुरू करें।" — Real, not manufactured. Works because it's actually true every year.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing reveal">
+    <div class="inner">
+      <div class="big-line">THE SAPNA<br>IS <span class="red">REAL.</span><br>NOW MAKE<br>IT HAPPEN.</div>
+      <p>Two creatives. Clear strategy. Full production brief in your hands. The only thing left is to shoot it, run it, and let the data tell you what Rohan's audience responds to.</p>
+      <div class="closing-meta">
+        <div class="closing-meta-item">
+          <span class="lbl">Client</span>
+          <span class="val">Flight Bindas</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Concepts</span>
+          <span class="val">2 — A/B Test Ready</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Platform</span>
+          <span class="val">Meta — Reels + Feed</span>
+        </div>
+        <div class="closing-meta-item">
+          <span class="lbl">Status</span>
+          <span class="val" style="color:var(--green);">● Ready to Shoot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="logo">FLIGHT<span>BINDAS</span></div>
+    <div class="tagline" style="margin-top:4px;">Hajj Mubarak — Plan It Right</div>
+  </div>
+  <p>Hajj Ad Production Brief · Prepared by Rohan · 2025</p>
+</footer>
+
+<script>
+function switchTab(id, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Re-trigger reveals for newly shown panel
+  setTimeout(() => {
+    document.querySelectorAll('#' + id + ' .reveal').forEach(el => {
+      if (!el.classList.contains('visible')) {
+        el.classList.add('visible');
+      }
+    });
+  }, 100);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
